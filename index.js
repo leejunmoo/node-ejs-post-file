@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const ejs = require('ejs');
 const fs = require('fs');
+// fs 모듈 = node.js 내장모듈 ( 읽고 쓰기 )
 
 
 let posts = []; // 글
@@ -45,7 +46,7 @@ app.post('/create', function(req, res) {
   // posts 배열에 글추가
   console.log(posts);
   // DB file 에 글 저장
-  
+  fs.writeFileSync('postDB.json', JSON.stringify(posts))
   // 홈(게시판)으로 이동
   res.redirect('/');
 })
