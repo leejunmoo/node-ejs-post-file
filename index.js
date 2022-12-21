@@ -15,9 +15,6 @@ posts = [...jsonData]; // post에 배열값 추가
 
 
 
-// post 요청시 필요
-app.use(express.json())
-app.use(express.urlencoded({extended: true}))
 
 // ejs를 view 엔진으로 설정
 app.set('view engine', 'ejs');
@@ -49,8 +46,26 @@ app.post('/create', function(req, res) {
   fs.writeFileSync('postDB.json', JSON.stringify(posts))
   // 홈(게시판)으로 이동
   res.redirect('/');
+
 })
 
+// 글삭제 요청 /delete
+app.post('/delete/:id', function(req, res){
+  const id = req.params.id;
+  console.log(id)
+  // 누르는 버튼에 해당하는 id 배열 삭제
+  posts.splice(id, 1)
+   // DB file 에 글 저장
+   fs.writeFileSync('postDB.json', JSON.stringify(posts))
+   // 홈(게시판)으로 이동
+   res.redirect('/');
+   console.log(posts)
+})
+app.post('/create', (req, res) => {
+  if(post == '') { // admin 유저가 아니면
+    return res.render('alert', {error: '잘못된 접근입니다'});
+  }
+})
 
 const port = 3001;
 app.listen(port, () => {
