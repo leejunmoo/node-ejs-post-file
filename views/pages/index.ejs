@@ -19,13 +19,15 @@
       <input type="text" name="post" placeholder="글을 입력하세요">
       <button type="submit">글 쓰기</button>
     </form>
-    
+    <!-- 내림차순으로 진행 -->
     <section>
       <h2>글 목록</h2>
       <ul>
         <% for(let i = posts.length-1; i >=0 ; i--){ %> 
           <li>
-            글번호 <%= i+1 %>: <%= posts[i]  %>
+            <div>
+              글번호 <%= i+1 %>: <%= posts[i]  %>
+            </div>
             <form action="/delete/<%= i %>" method="post">
             <button type="submit">삭제</button>
           </form>

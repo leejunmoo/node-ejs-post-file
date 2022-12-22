@@ -61,11 +61,14 @@ app.post('/delete/:id', function(req, res){
    res.redirect('/');
    console.log(posts)
 })
-app.post('/create', (req, res) => {
+
+
+// alert 경고문 띄워보려고햇으나..실패 ..sibal!
+/* app.post('/create', (req, res) => {
   if(post == '') { // admin 유저가 아니면
     return res.render('alert', {error: '잘못된 접근입니다'});
   }
-})
+}) */
 
 const port = 3001;
 app.listen(port, () => {

@@ -13,3 +13,8 @@ a {
 input {
   padding: 5px;
 }
+
+section ul li {
+  display: flex;
+  justify-content: space-between;
+}
